@@ -1,0 +1,10 @@
+@startuml
+start
+:Usuario escolhe consultar totalizacoes;
+:Sistema busca registros de publico;
+:Sistema agrupa por sessao;
+:Sistema agrupa por filme;
+:Sistema agrupa por cinema;
+:Sistema apresenta totais no terminal;
+stop
+@enduml

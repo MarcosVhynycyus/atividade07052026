@@ -1,0 +1,43 @@
+@startuml
+title Diagrama de Classes do Dominio - Registro de Publico
+skinparam classAttributeIconSize 0
+hide methods
+
+class Cinema {
+  nome: texto
+  cidade: texto
+  estado: texto
+  capacidadePublico: inteiro
+}
+
+class Filme {
+  titulo: texto
+  duracaoMinutos: inteiro
+  classificacaoIndicativa: texto
+}
+
+class Sessao {
+  sala: texto
+  inicio: dataHora
+  intervaloMinutos: inteiro
+}
+
+class RegistroPublico {
+  dataRegistro: data
+  quantidadeEspectadores: inteiro
+}
+
+Cinema "1" -- "0..*" Sessao : agenda
+Filme "1" -- "0..*" Sessao : participa
+Sessao "1" -- "0..*" RegistroPublico : acumula
+
+note right of RegistroPublico
+  Entidade central do caso de uso
+  implementado na aplicacao.
+end note
+
+note bottom of Sessao
+  Publico total da sessao =
+  soma dos seus registros de publico.
+end note
+@enduml

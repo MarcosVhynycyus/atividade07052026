@@ -1,0 +1,24 @@
+@startuml
+actor Usuario
+participant "RelatorioView" as View
+participant "RelatorioController" as Controller
+participant "RelatorioService" as Service
+participant "RelatorioRepository" as Repository
+database "SQLite" as DB
+
+Usuario -> View: solicita totalizacoes
+View -> Controller: obter_totalizacoes()
+Controller -> Service: obter_totalizacoes()
+Service -> Repository: total_por_sessao()
+Repository -> DB: SELECT GROUP BY sessao
+DB --> Repository: totais por sessao
+Service -> Repository: total_por_filme()
+Repository -> DB: SELECT GROUP BY filme
+DB --> Repository: totais por filme
+Service -> Repository: total_por_cinema()
+Repository -> DB: SELECT GROUP BY cinema
+DB --> Repository: totais por cinema
+Service --> Controller: totalizacoes
+Controller --> View: dados formatados
+View --> Usuario: exibe totais
+@enduml

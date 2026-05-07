@@ -1,0 +1,23 @@
+@startuml
+start
+:Funcionario acessa o menu;
+:Sistema lista sessoes em cartaz;
+:Funcionario informa sessao e quantidade;
+:Sistema valida existencia da sessao;
+if (Sessao existe?) then (sim)
+  :Sistema calcula publico atual;
+  if (Quantidade e positiva?) then (sim)
+    if (Capacidade sera respeitada?) then (sim)
+      :Sistema registra publico no banco;
+      :Sistema exibe ocupacao atualizada;
+    else (nao)
+      :Sistema informa limite de capacidade;
+    endif
+  else (nao)
+    :Sistema informa quantidade invalida;
+  endif
+else (nao)
+  :Sistema informa sessao inexistente;
+endif
+stop
+@enduml

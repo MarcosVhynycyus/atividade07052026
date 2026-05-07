@@ -1,0 +1,65 @@
+@startuml
+title Diagrama de Classes do Dominio - Rede de Cinemas
+skinparam classAttributeIconSize 0
+hide methods
+
+class RedeDeCinemas {
+  nome: texto
+}
+
+class Cinema {
+  nome: texto
+  cidade: texto
+  estado: texto
+  endereco: texto
+  capacidadePublico: inteiro
+}
+
+class Filme {
+  titulo: texto
+  duracaoMinutos: inteiro
+  classificacaoIndicativa: texto
+}
+
+class Genero {
+  nome: texto
+}
+
+class Diretor {
+  nome: texto
+}
+
+class Ator {
+  nome: texto
+}
+
+class Sessao {
+  sala: texto
+  inicio: dataHora
+  intervaloMinutos: inteiro
+}
+
+class RegistroPublico {
+  dataRegistro: data
+  quantidadeEspectadores: inteiro
+}
+
+RedeDeCinemas "1" -- "1..*" Cinema : possui
+Cinema "1" -- "0..*" Sessao : realiza
+Filme "1" -- "0..*" Sessao : e exibido em
+Sessao "1" -- "0..*" RegistroPublico : recebe
+Filme "1" -- "1" Genero : classificado por
+Filme "1" -- "1..*" Diretor : dirigido por
+Filme "1" -- "0..*" Ator : possui elenco
+
+note right of Sessao
+  A sessao conecta um filme,
+  um cinema, uma sala e um horario.
+end note
+
+note bottom of RegistroPublico
+  A soma dos registros de publico
+  de uma sessao nao pode ultrapassar
+  a capacidade do cinema.
+end note
+@enduml

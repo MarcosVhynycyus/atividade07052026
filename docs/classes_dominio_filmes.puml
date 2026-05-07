@@ -1,0 +1,38 @@
+@startuml
+title Diagrama de Classes do Dominio - Filmes e Informacoes Artisticas
+skinparam classAttributeIconSize 0
+hide methods
+
+class Filme {
+  titulo: texto
+  duracaoMinutos: inteiro
+  classificacaoIndicativa: texto
+}
+
+class Genero {
+  nome: texto
+}
+
+class Diretor {
+  nome: texto
+}
+
+class Ator {
+  nome: texto
+}
+
+class Sessao {
+  sala: texto
+  inicio: dataHora
+}
+
+Filme "1" -- "1" Genero : pertence a
+Filme "1" -- "1..*" Diretor : dirigido por
+Filme "1" -- "0..*" Ator : possui no elenco
+Filme "1" -- "0..*" Sessao : exibido em
+
+note bottom of Filme
+  O espectador consulta filmes em cartaz
+  por titulo, genero, diretor e elenco.
+end note
+@enduml

@@ -51,6 +51,3 @@ python3 src/main.py
 
 O banco sera criado em `src/config/database.db`.
 
-## Parecer final
-
-A solucao cumpre a atividade proposta porque apresenta documentacao objetiva, diagramas conectados ao problema de negocio e um caso de uso funcional com persistencia em SQLite. O projeto tambem deixa uma base clara para evolucao, como cadastro completo de filmes, organizacao automatica de sessoes e novas consultas gerenciais.

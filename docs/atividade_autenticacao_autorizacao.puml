@@ -1,0 +1,15 @@
+@startuml
+start
+:Usuario informa login e senha;
+:Sistema busca usuario por login;
+if (Credenciais validas e usuario ativo?) then (sim)
+  if (Perfil admin?) then (sim)
+    :Sistema exibe menu administrativo;
+  else (staff)
+    :Sistema exibe menu basico;
+  endif
+else (nao)
+  :Sistema informa falha de autenticacao;
+endif
+stop
+@enduml

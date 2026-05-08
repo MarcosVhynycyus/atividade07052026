@@ -1,0 +1,21 @@
+@startuml
+actor Administrador
+participant "AdminMenuPage" as Menu
+participant "Controller do modulo" as Controller
+participant "Service do modulo" as Service
+participant "Repository do modulo" as Repository
+database "SQLite" as DB
+
+Administrador -> Menu: informa dados da operacao
+Menu -> Controller: criar/atualizar/excluir(usuario, dados)
+Controller -> Service: operacao(usuario, dados convertidos)
+Service -> Service: validar perfil admin
+Service -> Service: validar regras de negocio
+Service -> Repository: gravar alteracao
+Repository -> DB: INSERT/UPDATE/DELETE
+DB --> Repository: confirmacao
+Repository --> Service: resultado
+Service --> Controller: dados atualizados
+Controller --> Menu: resposta padronizada
+Menu --> Administrador: exibe resultado
+@enduml

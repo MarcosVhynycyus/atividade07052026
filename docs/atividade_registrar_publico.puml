@@ -1,8 +1,15 @@
 @startuml
 start
-:Funcionario acessa o menu;
+:Usuario informa login e senha;
+:Sistema autentica usuario;
+if (Usuario ativo?) then (sim)
+  :Sistema abre menu conforme perfil;
+else (nao)
+  :Sistema informa falha de autenticacao;
+  stop
+endif
 :Sistema lista sessoes em cartaz;
-:Funcionario informa sessao e quantidade;
+:Usuario informa sessao e quantidade;
 :Sistema valida existencia da sessao;
 if (Sessao existe?) then (sim)
   :Sistema calcula publico atual;

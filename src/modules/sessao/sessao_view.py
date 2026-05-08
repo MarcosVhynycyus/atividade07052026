@@ -19,3 +19,18 @@ class SessaoView:
                 f"    Publico: {sessao['publico_registrado']}/{sessao['capacidade']} "
                 f"| Lugares restantes: {sessao['lugares_restantes']}"
             )
+
+    def exibir_resultado(self, response):
+        print("\nOPERACAO DE SESSAO")
+        print("-" * 72)
+        if not response["ok"]:
+            print(f"Erro: {response['erro']}")
+            return
+
+        print(response.get("mensagem", "Operacao realizada com sucesso."))
+        sessao = response.get("data")
+        if sessao and "inicio" in sessao:
+            print(
+                f"[{sessao['id']}] {sessao['inicio']} | {sessao['cinema']} | "
+                f"{sessao['sala']} | {sessao['filme']}"
+            )

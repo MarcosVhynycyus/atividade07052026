@@ -1,23 +1,32 @@
 @startuml
 left to right direction
 
-actor "Funcionario/\nAdministrador" as Funcionario
+actor "Administrador" as Admin
+actor "Staff" as Staff
 actor "Espectador" as Espectador
 
 rectangle "Sistema Rede de Cinemas" {
+  usecase "Autenticar usuario" as UC0
   usecase "Manter cinemas" as UC1
   usecase "Manter filmes" as UC2
-  usecase "Organizar sessoes" as UC3
+  usecase "Manter sessoes" as UC3
   usecase "Registrar publico\nda sessao" as UC4
   usecase "Consultar totalizacoes" as UC5
   usecase "Consultar filmes\ne sessoes" as UC6
+  usecase "Manter registros\nde publico" as UC7
 }
 
-Funcionario --> UC1
-Funcionario --> UC2
-Funcionario --> UC3
-Funcionario --> UC4
-Funcionario --> UC5
-Funcionario --> UC6
+Admin --> UC0
+Staff --> UC0
+Admin --> UC1
+Admin --> UC2
+Admin --> UC3
+Admin --> UC4
+Admin --> UC5
+Admin --> UC6
+Admin --> UC7
+Staff --> UC4
+Staff --> UC5
+Staff --> UC6
 Espectador --> UC6
 @enduml

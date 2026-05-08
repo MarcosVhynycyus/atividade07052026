@@ -1,0 +1,20 @@
+@startuml
+start
+:Administrador acessa menu administrativo;
+:Administrador escolhe entidade;
+:Administrador escolhe adicionar, alterar ou excluir;
+:Sistema envia dados ao controller do modulo;
+:Service valida perfil admin;
+if (Usuario e admin?) then (sim)
+  :Service valida dados e vinculos;
+  if (Regras atendidas?) then (sim)
+    :Repository grava alteracao no SQLite;
+    :Sistema exibe sucesso;
+  else (nao)
+    :Sistema exibe erro de regra de negocio;
+  endif
+else (nao)
+  :Sistema nega operacao;
+endif
+stop
+@enduml

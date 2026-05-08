@@ -1,13 +1,14 @@
 @startuml
-actor Funcionario
+actor "Admin/Staff" as Usuario
+participant "MenuPage/AdminMenuPage" as Menu
 participant "PublicoView" as View
 participant "PublicoController" as Controller
 participant "PublicoService" as Service
 participant "PublicoRepository" as Repository
 database "SQLite" as DB
 
-Funcionario -> View: informa sessao e quantidade
-View -> Controller: registrar_publico(sessaoId, quantidade)
+Usuario -> Menu: informa sessao e quantidade
+Menu -> Controller: registrar_publico(sessaoId, quantidade)
 Controller -> Service: registrar_publico(sessaoId, quantidade)
 Service -> Repository: obter_sessao_com_publico(sessaoId)
 Repository -> DB: SELECT sessao, cinema, filme, publico
@@ -19,6 +20,7 @@ Repository -> DB: INSERT INTO publicos
 DB --> Repository: confirmacao
 Repository --> Service: registro criado
 Service --> Controller: ocupacao atualizada
-Controller --> View: resposta de sucesso
-View --> Funcionario: exibe resultado
+Controller --> Menu: resposta de sucesso
+Menu -> View: exibir_resultado(response)
+View --> Usuario: exibe resultado
 @enduml

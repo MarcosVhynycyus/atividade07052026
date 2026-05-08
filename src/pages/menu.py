@@ -22,8 +22,10 @@ class MenuPage:
         self.cinema_view = cinema_view
         self.filme_controller = filme_controller
         self.filme_view = filme_view
+        self.usuario = None
 
-    def exibir(self):
+    def exibir(self, usuario=None):
+        self.usuario = usuario
         while True:
             self._cabecalho()
             print("1 - Listar sessoes em cartaz")
@@ -55,6 +57,8 @@ class MenuPage:
     def _cabecalho(self):
         print("\n" + "=" * 72)
         print("SISTEMA REDE DE CINEMAS")
+        if self.usuario:
+            print(f"MENU STAFF | {self.usuario['nome']} ({self.usuario['perfil']})")
         print("=" * 72)
 
     def _listar_sessoes(self):

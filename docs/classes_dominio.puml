@@ -44,6 +44,19 @@ class RegistroPublico {
   quantidadeEspectadores: inteiro
 }
 
+class Usuario {
+  nome: texto
+  login: texto
+  senhaHash: texto
+  perfil: PerfilUsuario
+  ativo: booleano
+}
+
+enum PerfilUsuario {
+  admin
+  staff
+}
+
 RedeDeCinemas "1" -- "1..*" Cinema : possui
 Cinema "1" -- "0..*" Sessao : realiza
 Filme "1" -- "0..*" Sessao : e exibido em
@@ -51,6 +64,11 @@ Sessao "1" -- "0..*" RegistroPublico : recebe
 Filme "1" -- "1" Genero : classificado por
 Filme "1" -- "1..*" Diretor : dirigido por
 Filme "1" -- "0..*" Ator : possui elenco
+Usuario "1" -- "1" PerfilUsuario : usa
+Usuario ..> Cinema : administra
+Usuario ..> Filme : administra
+Usuario ..> Sessao : administra
+Usuario ..> RegistroPublico : administra
 
 note right of Sessao
   A sessao conecta um filme,
@@ -61,5 +79,10 @@ note bottom of RegistroPublico
   A soma dos registros de publico
   de uma sessao nao pode ultrapassar
   a capacidade do cinema.
+end note
+
+note right of Usuario
+  Admin mantem cadastros.
+  Staff executa funcoes basicas.
 end note
 @enduml

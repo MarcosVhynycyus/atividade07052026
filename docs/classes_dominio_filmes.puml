@@ -32,7 +32,8 @@ Filme "1" -- "0..*" Ator : possui no elenco
 Filme "1" -- "0..*" Sessao : exibido em
 
 note bottom of Filme
-  O espectador consulta filmes em cartaz
+  Admin mantem o cadastro de filmes.
+  Staff e espectador consultam filmes
   por titulo, genero, diretor e elenco.
 end note
 @enduml

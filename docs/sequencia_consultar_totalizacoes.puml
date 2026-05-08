@@ -1,5 +1,5 @@
 @startuml
-actor Usuario
+actor "Admin/Staff" as Usuario
 participant "RelatorioView" as View
 participant "RelatorioController" as Controller
 participant "RelatorioService" as Service

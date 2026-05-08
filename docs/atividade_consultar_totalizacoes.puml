@@ -1,6 +1,6 @@
 @startuml
 start
-:Usuario escolhe consultar totalizacoes;
+:Usuario autenticado escolhe consultar totalizacoes;
 :Sistema busca registros de publico;
 :Sistema agrupa por sessao;
 :Sistema agrupa por filme;

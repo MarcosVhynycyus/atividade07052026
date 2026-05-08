@@ -27,13 +27,19 @@ class RegistroPublico {
   quantidadeEspectadores: inteiro
 }
 
+class Usuario {
+  nome: texto
+  perfil: PerfilUsuario
+}
+
 Cinema "1" -- "0..*" Sessao : agenda
 Filme "1" -- "0..*" Sessao : participa
 Sessao "1" -- "0..*" RegistroPublico : acumula
+Usuario ..> RegistroPublico : registra ou administra
 
 note right of RegistroPublico
   Entidade central do caso de uso
-  implementado na aplicacao.
+  operacional da aplicacao.
 end note
 
 note bottom of Sessao
